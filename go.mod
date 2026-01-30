@@ -1,4 +1,4 @@
-module github.com/NirajDonga/text-search-engine
+module text-search-engine
 
 go 1.24.0
 

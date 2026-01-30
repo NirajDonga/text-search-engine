@@ -5,7 +5,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/NirajDonga/text-search-engine/utils"
+	"text-search-engine/utils"
 )
 
 func main() {
