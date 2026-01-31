@@ -1,4 +1,4 @@
-module text-search-engine
+module github.com/NirajDonga/elastic-search
 
 go 1.24.0
 

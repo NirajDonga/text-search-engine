@@ -2,14 +2,15 @@ package utils
 
 type Index map[string][]int
 
-func (idx Index) Add(docs []Document) {
+// Add indexes any slice of Searchable items
+func (idx Index) Add(docs []Searchable) {
 	for _, doc := range docs {
-		for _, token := range analyze(doc.Text) {
+		for _, token := range Analyze(doc.GetSearchText()) {
 			ids := idx[token]
-			if ids != nil && ids[len(ids)-1] == doc.ID {
+			if ids != nil && ids[len(ids)-1] == doc.GetID() {
 				continue
 			}
-			idx[token] = append(ids, doc.ID)
+			idx[token] = append(ids, doc.GetID())
 		}
 	}
 }
@@ -37,7 +38,7 @@ func Intersection(a []int, b []int) []int {
 
 func (idx Index) Search(text string) []int {
 	var r []int
-	for _, token := range analyze(text) {
+	for _, token := range Analyze(text) {
 		if ids, ok := idx[token]; ok {
 			if r == nil {
 				r = ids

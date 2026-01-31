@@ -6,11 +6,26 @@ import (
 	"os"
 )
 
+// Searchable interface - implement this to make any type searchable
+type Searchable interface {
+	GetID() int
+	GetSearchText() string
+}
+
 type Document struct {
 	Title string `xml:"title"`
 	URL   string `xml:"url"`
 	Text  string `xml:"abstract"`
 	ID    int
+}
+
+// Implement Searchable interface for Document
+func (d Document) GetID() int {
+	return d.ID
+}
+
+func (d Document) GetSearchText() string {
+	return d.Text
 }
 
 func LoadDocuments(path string) ([]Document, error) {

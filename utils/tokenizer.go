@@ -11,7 +11,8 @@ func tokenize(text string) []string {
 	})
 }
 
-func analyze(text string) []string {
+// Analyze tokenizes and filters text for indexing/searching
+func Analyze(text string) []string {
 	tokens := tokenize(text)
 	tokens = lowerCaseFilter(tokens)
 	tokens = stopWordFilter(tokens)
